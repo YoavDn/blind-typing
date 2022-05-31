@@ -7,8 +7,9 @@ const gLetters = gText.split("")
 let gCurrLetter = 0
 let gCharId = 0
 const elContainer = document.querySelector(".container")
-console.log(gLetters)
+
 renderText(gText)
+const chars = document.querySelectorAll(".char")
 
 function type(e) {
   if (gCurrLetter === gLetters.length) {
@@ -41,15 +42,18 @@ function type(e) {
 
 function updateChar(charId, display) {
   const currChar = document.getElementById(`char-${charId}`)
-  currChar.style.backgroundColor = "rgb(99, 95, 95, 0.5)"
   currChar.style.textDecoration = "none"
-
-  currChar.style.color = display ? "#99d98c" : "#ff595e"
+  currChar.style.color = display ? "rgb(249, 241, 241)" : "#ff595e"
+  currChar.style.setProperty("--color", "#252422")
 }
 
 function charCursor(charId, display) {
   const currChar = document.getElementById(`char-${charId}`)
-  currChar.style.textDecoration = display ? "underline" : "none"
+  if (display) {
+    currChar.style.setProperty("--color", "rgba(255,255,255,0.6)")
+  } else {
+    currChar.style.setProperty("--color", "#252422")
+  }
 }
 
 function renderChar(char) {
